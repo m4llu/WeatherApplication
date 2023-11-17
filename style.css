@@ -1,0 +1,275 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+:root   {
+    --bg: #14131C;
+    --div: #221F28;
+    --detail: #666F74;
+    --hover: #2f2d41;
+}
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+h2  {
+    opacity: 0;
+}
+.leftDiv    {
+    background-color: var(--div);
+    width: 446px;
+    height: 980px;
+    flex-shrink: 0;
+    border-radius: 35px;
+    margin: 10px;
+    position: relative;
+    display: flex;
+}
+
+
+.cities{
+    margin-left: 25px;
+    width: 291px;
+    height: 35px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.container    {
+    display: flex;
+    background-color: var(--bg);
+    width: 90%;
+    height: 1000px;
+    position: relative;
+    margin: auto;
+    border-radius: 25px;
+    overflow: hidden;
+    max-width: 700px;
+}
+
+
+
+.today  {
+    width: 0;
+    display: flex;
+    background-color: var(--div);
+    position: inherit;
+    float: left;
+    margin-right: 2000px;
+    }
+    .city   {
+        background-color: rgba(27, 57, 71, 0);
+        display: flex;
+        position: relative;
+        width: 310px;
+        height: 100%;
+        text-align: center;
+        flex-direction: column;
+        transition: 0.4s;
+        min-width: 150px;
+    }
+
+    .city:hover {
+        background-color: var(--hover);
+    }
+
+    .citytitle  {
+        text-align: center;
+        width: 100%;
+        height: max-content;
+        font-family: Poppins;
+        color: #FFF;
+        font-size: 16px;
+    }
+    
+    .citytemp   {
+        font-family: Poppins;
+        color: #FFF;
+        top: 60%;
+        position: relative;
+        height: max-content;
+    }
+
+    .leftDiv    {
+        opacity: 0;
+    }
+
+.cities {
+    font-size: 11 px;
+}
+
+.mobileTop  {
+    width: inherit;
+    background-color: var(--div);
+    display: flex;
+    position: absolute;
+    height: 178px;
+    border-radius: 25px;
+    top: 100px;
+    margin-left: 4.8%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    max-width: 700px;
+    align-content: center;
+}
+
+.mobileMid  {
+    width: inherit;
+    background-color: var(--div);
+    display: block;
+    position: absolute;
+    height: 300px;
+    border-radius: 25px;
+    top: 300px;
+    margin-left: 4.8%;
+    overflow: hidden;
+    max-width: 700px;
+}
+
+.mobileBottom  {
+    width: inherit;
+    background-color: var(--div);
+    display: flex;
+    position: absolute;
+    height: 300px;
+    border-radius: 25px;
+    top: 624px;
+    margin-left: 4.8%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    max-width: 700px;
+}
+
+.rightContainer  {
+    background-color: var(--div);
+    display: flex;
+    position: sticky;
+    width: 100px;
+    height: 100px;
+
+
+  }
+.items  {
+    width: inherit;
+    height: 1037px;
+    position: absolute;
+    top: 4px;
+    margin: 4.8%;
+}
+
+.container2  {
+    width: initial;
+    height: 300px;
+    position: initial;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.info   {
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    transition: 0.4s;
+}
+
+.info:hover {
+    background-color: var(--hover);
+    
+}
+
+.data {
+    position: relative;
+    margin: 0px;
+    top: -160px;
+    text-align: center;
+    width: 100%;
+}
+
+.section    {
+    background-color: rgba(27, 57, 71, 0);
+    display: flex;
+    position: relative;
+    min-width: 64px;
+    height: 100%;
+    text-align: center;
+    flex-direction: row;
+    transition: 0.4s;
+    align-content: center;
+    margin: 5px;
+}
+
+.section2    {
+    background-color: var(--div);
+    width: 135px;
+    height: 260px;
+    margin: 5px;
+}
+h1  {
+    font-family: Poppins;
+    color: #FFF;
+    font-size: 20px;
+    margin-bottom: 180px;
+}
+h2  {
+    font-family: Poppins;
+    color: var(--detail);
+    font-size: 15px;
+    position: absolute;
+    width: 64px;
+    opacity: 1;
+}
+
+.temp   {
+    font-family: Poppins;
+    color: #FFF;
+    font-size: 12px;
+    margin-top: 123px;
+    position: absolute;
+    width: 64px;
+}
+
+img {
+    position: absolute;
+    height: 64px;
+    width: max-content;
+    top: 42px;
+}
+
+.search   {
+    width: inherit;
+    position: absolute;
+    top: 60px;
+    padding: 6px;
+    border: none;
+    height: 20px;
+    border-radius: 25px;
+    margin-left: 4.8%;
+    max-width: 700px;
+    font-family: Poppins;
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 400px) {
+    body {
+      background-color: rgb(255, 0, 0);
+    }
+
+    .temp   {
+        font-size: 9px;
+        }
+
+    .mobileBottom   {
+        height: 200px;
+    }
+
+    .citytemp   {
+        top: 80px;
+        font-size: 10px;
+    }
+        
+  }
