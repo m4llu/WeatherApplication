@@ -161,7 +161,7 @@ h2  {
     margin: 4.8%;
 }
 
-.container2  {
+.weatherInfo  {
     width: initial;
     height: 300px;
     position: initial;
@@ -215,6 +215,11 @@ h1  {
     font-size: 20px;
     margin-bottom: 180px;
 }
+
+.data {
+    color: var(--detail);
+}
+
 h2  {
     font-family: Poppins;
     color: var(--detail);
