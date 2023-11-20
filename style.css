@@ -61,6 +61,7 @@ h2  {
     float: left;
     margin-right: 2000px;
     }
+
     .city   {
         background-color: rgba(27, 57, 71, 0);
         display: flex;
@@ -94,13 +95,9 @@ h2  {
         height: max-content;
     }
 
-    .leftDiv    {
-        opacity: 0;
-    }
-
-.cities {
+    .cities {
     font-size: 11 px;
-}
+    }
 
 .mobileTop  {
     width: inherit;
@@ -243,6 +240,7 @@ img {
     height: 64px;
     width: max-content;
     top: 42px;
+    margin: auto;
 }
 
 .search   {
@@ -258,11 +256,11 @@ img {
     font-family: Poppins;
     font-size: 14px;
 }
+.api-logo   {
+    opacity: 0;
+}
 
 @media only screen and (max-width: 400px) {
-    body {
-      background-color: rgb(255, 0, 0);
-    }
 
     .temp   {
         font-size: 9px;
@@ -276,5 +274,22 @@ img {
         top: 80px;
         font-size: 10px;
     }
-        
+
+    h1 {
+        font-size: 14px;
+    }
+
+    .info   {
+        padding-top: 6%;
+    }
+
+    .api-logo   {
+        opacity: 1;
+        top: 830px;
+        position: relative;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
   }
