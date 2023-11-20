@@ -23,7 +23,6 @@ searchInput.addEventListener('change', function(event) {
 
 }).then(response => {
 
-  console.log(response)
 
   let temperatureCelsius = response.current.temp_c;
   document.getElementById("temp").innerHTML = `${temperatureCelsius} °C`
