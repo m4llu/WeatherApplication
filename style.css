@@ -15,17 +15,6 @@ body{
 h2  {
     opacity: 0;
 }
-.leftDiv    {
-    background-color: var(--div);
-    width: 446px;
-    height: 980px;
-    flex-shrink: 0;
-    border-radius: 35px;
-    margin: 10px;
-    position: relative;
-    display: flex;
-}
-
 
 .cities{
     margin-left: 25px;
@@ -261,7 +250,7 @@ img {
     visibility: hidden;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 460px) {
 
     .temp   {
         font-size: 9px;
@@ -286,11 +275,20 @@ img {
 
     .api-logo   {
         opacity: 1;
+        visibility: visible;
         top: 830px;
         position: relative;
         display: block;
         margin-left: auto;
         margin-right: auto;
         width: 50%;
+    }
+
+    .city   {
+        min-width: 80px;
+    }
+
+    .citytitle  {
+        font-size: 14px;
     }
   }
