@@ -1,7 +1,24 @@
 import { API_KEY } from './info.js'
 let currentCity = "Lahti";
-
+let velUnit = "km/h"
+let tempUnit = "°C"
+let theme = 0
 const searchInput = document.querySelector('.search');
+const checkBox = document.getElementById('checkBox');
+const checkBox1 = document.getElementById('checkBox1');
+
+checkBox1.addEventListener('change', function(event) {
+  // Update the JavaScript variable based on the checkbox state
+  featureEnabled = event.target.checked;
+  // You can also perform other actions based on the checkbox state here
+  if (featureEnabled) {
+    velUnit = "mp/h"
+    tempUnit = "°F"
+  } else {
+    velUnit = "km/h"
+    tempUnit = "°C"
+  }
+});
 
 
 searchInput.addEventListener('change', function(event) {
@@ -23,10 +40,6 @@ searchInput.addEventListener('change', function(event) {
 
 }).then(response => {
 
-
-  let temperatureCelsius = response.current.temp_c;
-  document.getElementById("temp").innerHTML = `${temperatureCelsius} °C`
-
   let uvIndex = response.current.uv;
   document.getElementById("uv").innerHTML = `${uvIndex}`
   
@@ -34,10 +47,10 @@ searchInput.addEventListener('change', function(event) {
   document.getElementById("rain").innerHTML = `${rain} %`
   
   let feelsLike = response.current.feelslike_c;
-  document.getElementById("feels").innerHTML = `${feelsLike} °C`
+  document.getElementById("feels").innerHTML = `${feelsLike} ${tempUnit}`
 
   let wind = response.current.wind_kph;
-  document.getElementById("wind").innerHTML = `${wind} km/h`
+  document.getElementById("wind").innerHTML = `${wind} ${velUnit}`
   
   let date = response.forecast.forecastday[0].date;
   document.getElementById("date").innerHTML = `${currentCity}`;
