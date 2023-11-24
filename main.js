@@ -73,10 +73,10 @@ searchInput.addEventListener('keypress', function(event) {
 checkBox.addEventListener('change', function(event) {
   if (event.target.checked) {
     theme = 1;
-    // Päivitä teema checkboxin tilan perusteella
+
   } else {
     theme = 0;
-    // Päivitä teema checkboxin tilan perusteella
+
   }
   updateTheme();
 });
@@ -85,11 +85,9 @@ checkBox1.addEventListener('change', function(event) {
   if (event.target.checked) {
     velUnit = "mp/h";
     tempUnit = "°F";
-    // Päivitä nopeuden ja lämpötilan yksiköt checkboxin tilan perusteella
   } else {
     velUnit = "km/h";
     tempUnit = "°C";
-    // Päivitä nopeuden ja lämpötilan yksiköt checkboxin tilan perusteella
   }
   updateUnitsOnScreen(feelsLike, wind);
 });
@@ -98,7 +96,6 @@ function updateUnitsOnScreen(feelsLike, wind) {
   document.getElementById("feels").innerHTML = `${feelsLike} ${tempUnit}`
 
   document.getElementById("wind").innerHTML = `${wind} ${velUnit}`
-  // Päivitä muut sään tiedot vastaavasti
 }
 
 function updateTheme()  {
