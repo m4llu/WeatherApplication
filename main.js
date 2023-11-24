@@ -18,6 +18,7 @@ const checkBox3 = document.getElementById('checkBox3');
 searchInput.addEventListener('change', function(event) {
   currentCity = event.target.value;
   document.getElementById("date").innerHTML = `${currentCity}`;
+  // getting data from API
   fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${currentCity}&days=1&aqi=no&alerts=no`, {
     method: 'GET', 
     headers: {}
@@ -26,6 +27,7 @@ searchInput.addEventListener('change', function(event) {
       throw response;
     }
     return response.json(); 
+    // displaying data in site
   }).then(response => {
     let uvIndex = response.current.uv;
     document.getElementById("uv").innerHTML = `${uvIndex}`
@@ -42,7 +44,7 @@ searchInput.addEventListener('change', function(event) {
     document.getElementById("wind").innerHTML = `${wind_kph} ${velUnit}`
 
     wind_mph = response.current.wind_mph;
-
+    // displaying icons for every hour
     let temperatureData = new Array(24).fill(0); 
     response.forecast.forecastday[0].hour.forEach(hourData => {
       let hour = parseInt(hourData.time.split(' ')[1].split(':')[0]); 
@@ -71,22 +73,56 @@ searchInput.addEventListener('change', function(event) {
     } 
   });
 });
-
+// searching for city when enter is presse
 searchInput.addEventListener('keypress', function(event) {
   if (event.key === 'Enter') {
     searchInput.blur();
   }
 });
+// saves settings to localStorage
+function saveCheckboxStatesToLocalStorage() {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('velUnit', velUnit);
+  localStorage.setItem('tempUnit', tempUnit);
+  localStorage.setItem('time', time);
+}
 
+// getting settings from localStorage
+function getCheckboxStatesFromLocalStorage() {
+  if (localStorage.getItem('theme')) {
+    theme = parseInt(localStorage.getItem('theme'));
+    updateTheme();
+    checkBox.checked = theme === 1;
+  }
+
+  if (localStorage.getItem('velUnit')) {
+    velUnit = localStorage.getItem('velUnit');
+    tempUnit = localStorage.getItem('tempUnit');
+    updateUnitsOnScreen(feelsLike_c, feelsLike_f, wind_kph, wind_mph);
+    checkBox1.checked = velUnit === "mp/h";
+  }
+
+  if (localStorage.getItem('time')) {
+    time = parseInt(localStorage.getItem('time'));
+    updateTime();
+    checkBox3.checked = time === 1;
+  }
+}
+
+// getting saved settings when site is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  getCheckboxStatesFromLocalStorage();
+});
+
+// change settings when checkboxes are toggled
 checkBox.addEventListener('change', function(event) {
   if (event.target.checked) {
     theme = 1;
-
   } else {
     theme = 0;
-
   }
   updateTheme();
+  saveCheckboxStatesToLocalStorage();
 });
 
 checkBox1.addEventListener('change', function(event) {
@@ -98,20 +134,19 @@ checkBox1.addEventListener('change', function(event) {
     tempUnit = "°C";
   }
   updateUnitsOnScreen(feelsLike_c, feelsLike_f, wind_kph, wind_mph);
+  saveCheckboxStatesToLocalStorage();
 });
 
 checkBox3.addEventListener('change', function(event) {
   if (event.target.checked) {
     time = 1;
   } else {
-
     time = 0;
-
   }
   updateTime();
+  saveCheckboxStatesToLocalStorage();
 });
-
-
+// updating units when toggled
 function updateUnitsOnScreen(feelsLike_c, feelslike_f, wind_kph, wind_mph) {
   if (velUnit == "mp/h") {
     document.getElementById("wind").innerHTML = `${wind_mph} ${velUnit}`
@@ -126,7 +161,7 @@ function updateUnitsOnScreen(feelsLike_c, feelslike_f, wind_kph, wind_mph) {
   }
 
 }
-
+// updating root colors when theme is changed
 function updateTheme()  {
   if (theme == 0) {
     document.documentElement.style.setProperty('--bg', '#14131C');
@@ -145,7 +180,7 @@ function updateTheme()  {
     document.documentElement.style.setProperty('--cb2', '#4d7ea7');
   }
 }
-
+// display time in 12h or 24h format
 function updateTime() {
   if (time == 0)  {
     document.getElementById("time1").innerHTML = `1.00`;
