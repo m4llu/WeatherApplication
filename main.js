@@ -2,13 +2,18 @@ import { API_KEY } from './info.js'
 let currentCity = "Lahti";
 var velUnit = "km/h"
 var tempUnit = "°C"
-var rain = " "
-var feelsLike = " "
-var wind = " "
+var rain;
+var feelsLike_c;
+var feelsLike_f;
+var wind_mph;
+var wind_kph;
 let theme = 0
+let time = 0
+let lang = 0;
 const searchInput = document.querySelector('.search');
 const checkBox = document.getElementById('checkBox');
 const checkBox1 = document.getElementById('checkBox1');
+const checkBox3 = document.getElementById('checkBox3');
 
 searchInput.addEventListener('change', function(event) {
   currentCity = event.target.value;
@@ -28,12 +33,15 @@ searchInput.addEventListener('change', function(event) {
     rain = response.current.temp_c;
     document.getElementById("rain").innerHTML = `${rain} %`
   
-    feelsLike = response.current.feelslike_c;
-    document.getElementById("feels").innerHTML = `${feelsLike} ${tempUnit}`
+    feelsLike_c = response.current.feelslike_c;
+    document.getElementById("feels").innerHTML = `${feelsLike_c} ${tempUnit}`
 
-    wind = response.current.wind_kph;
-    document.getElementById("wind").innerHTML = `${wind} ${velUnit}`
-  
+    feelsLike_f = response.current.feelslike_f;
+
+    wind_kph = response.current.wind_kph;
+    document.getElementById("wind").innerHTML = `${wind_kph} ${velUnit}`
+
+    wind_mph = response.current.wind_mph;
 
     let temperatureData = new Array(24).fill(0); 
     response.forecast.forecastday[0].hour.forEach(hourData => {
@@ -89,13 +97,34 @@ checkBox1.addEventListener('change', function(event) {
     velUnit = "km/h";
     tempUnit = "°C";
   }
-  updateUnitsOnScreen(feelsLike, wind);
+  updateUnitsOnScreen(feelsLike_c, feelsLike_f, wind_kph, wind_mph);
 });
 
-function updateUnitsOnScreen(feelsLike, wind) {
-  document.getElementById("feels").innerHTML = `${feelsLike} ${tempUnit}`
+checkBox3.addEventListener('change', function(event) {
+  if (event.target.checked) {
+    time = 1;
+  } else {
 
-  document.getElementById("wind").innerHTML = `${wind} ${velUnit}`
+    time = 0;
+
+  }
+  updateTime();
+});
+
+
+function updateUnitsOnScreen(feelsLike_c, feelslike_f, wind_kph, wind_mph) {
+  if (velUnit == "mp/h") {
+    document.getElementById("wind").innerHTML = `${wind_mph} ${velUnit}`
+  } else {
+    document.getElementById("wind").innerHTML = `${wind_kph} ${velUnit}`
+  }
+
+  if (tempUnit == "°F") {
+    document.getElementById("feels").innerHTML = `${feelsLike_f} ${tempUnit}`
+  } else {
+    document.getElementById("feels").innerHTML = `${feelsLike_c} ${tempUnit}`
+  }
+
 }
 
 function updateTheme()  {
@@ -117,3 +146,34 @@ function updateTheme()  {
   }
 }
 
+function updateTime() {
+  if (time == 0)  {
+    document.getElementById("time1").innerHTML = `1.00`;
+    document.getElementById("time3").innerHTML = `3.00`;
+    document.getElementById("time5").innerHTML = `5.00`;
+    document.getElementById("time7").innerHTML = `7.00`;
+    document.getElementById("time9").innerHTML = `9.00`;
+    document.getElementById("time11").innerHTML = `11.00`;
+    document.getElementById("time13").innerHTML = `13.00`;
+    document.getElementById("time15").innerHTML = `15.00`;
+    document.getElementById("time17").innerHTML = `17.00`;
+    document.getElementById("time19").innerHTML = `19.00`;
+    document.getElementById("time21").innerHTML = `21.00`;
+    document.getElementById("time23").innerHTML = `23.00`;
+  }
+  else {
+    document.getElementById("time1").innerHTML = `1 AM`;
+    document.getElementById("time3").innerHTML = `3 AM`;
+    document.getElementById("time5").innerHTML = `5 AM`;
+    document.getElementById("time7").innerHTML = `7 AM`;
+    document.getElementById("time9").innerHTML = `9 AM`;
+    document.getElementById("time11").innerHTML = `11 AM`;
+    document.getElementById("time13").innerHTML = `1 PM`;
+    document.getElementById("time15").innerHTML = `3 PM`;
+    document.getElementById("time17").innerHTML = `5 PM`;
+    document.getElementById("time19").innerHTML = `7 PM`;
+    document.getElementById("time21").innerHTML = `9 PM`;
+    document.getElementById("time23").innerHTML = `11 PM`;
+
+  }
+}
