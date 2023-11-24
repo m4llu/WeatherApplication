@@ -35,7 +35,7 @@ h2  {
     display: flex;
     background-color: var(--bg);
     width: 90%;
-    height: 1000px;
+    height: 900px;
     position: relative;
     margin: auto;
     border-radius: 25px;
@@ -107,7 +107,7 @@ h2  {
     background-color: var(--div);
     display: block;
     position: absolute;
-    height: 300px;
+    height: 250px;
     border-radius: 25px;
     top: 300px;
     margin-left: 4.8%;
@@ -120,12 +120,12 @@ h2  {
     background-color: var(--div);
     display: block;
     position: absolute;
-    height: 300px;
+    height: 250px;
     border-radius: 25px;
     margin-left: 4.8%;
     overflow: hidden;
     max-width: 700px;
-    top: 624px;
+    top: 570px;
 }
 
 .rightContainer  {
@@ -147,7 +147,7 @@ h2  {
 
 .weatherInfo  {
     width: initial;
-    height: 300px;
+    height: 250px;
     position: initial;
     overflow: hidden;
     display: flex;
@@ -353,9 +353,12 @@ h3  {
     h1 {
         font-size: 14px;
     }
+    h3 {
+        font-size: 14px;
+    }
 
     .info   {
-        padding-top: 6%;
+        padding-top: 2%;
     }
 
     .api-logo   {
