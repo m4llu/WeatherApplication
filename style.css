@@ -24,12 +24,12 @@ html, body {
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #2f2d41;
+    background: var(--cb1);
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #3c323f;
+    background: #FFF;
   }
 
 body{
