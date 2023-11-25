@@ -170,6 +170,7 @@ function updateTheme()  {
     document.documentElement.style.setProperty('--hover', '#2f2d41');
     document.documentElement.style.setProperty('--cb1', '#f19999');
     document.documentElement.style.setProperty('--cb2', '#3292e1');
+    document.documentElement.style.setProperty('--wp', '#14131C');
   }
   else  {
     document.documentElement.style.setProperty('--bg', '#bdbbca');
@@ -178,6 +179,7 @@ function updateTheme()  {
     document.documentElement.style.setProperty('--hover', '#807baa');
     document.documentElement.style.setProperty('--cb1', 'rgb(142, 176, 197)');
     document.documentElement.style.setProperty('--cb2', '#4d7ea7');
+    document.documentElement.style.setProperty('--wp', '#14131C');
   }
 }
 // display time in 12h or 24h format
