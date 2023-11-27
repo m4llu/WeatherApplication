@@ -5,11 +5,11 @@ html, body {
 :root   {
     --bg: #14131C;
     --div: #221F28;
-    --detail: #666F74;
+    --detail: #d3dce0;
     --hover: #2f2d41;
     --cb1: #f19999;
-    --cb2: #3292e1;
-    --transition: 1s;
+    --cb2: #1e4a6e;
+    --transition: 0.5s;
     --wp: #14131C;
 }
 

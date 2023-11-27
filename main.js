@@ -166,10 +166,10 @@ function updateTheme()  {
   if (theme == 0) {
     document.documentElement.style.setProperty('--bg', '#14131C');
     document.documentElement.style.setProperty('--div', '#221F28');
-    document.documentElement.style.setProperty('--detail', '#666F74');
+    document.documentElement.style.setProperty('--detail', '#d3dce0');
     document.documentElement.style.setProperty('--hover', '#2f2d41');
     document.documentElement.style.setProperty('--cb1', '#f19999');
-    document.documentElement.style.setProperty('--cb2', '#3292e1');
+    document.documentElement.style.setProperty('--cb2', '#1e4a6e');
     document.documentElement.style.setProperty('--wp', '#14131C');
   }
   else  {
