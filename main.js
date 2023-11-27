@@ -162,55 +162,41 @@ function updateUnitsOnScreen(feelsLike_c, feelslike_f, wind_kph, wind_mph) {
 
 }
 // updating root colors when theme is changed
-function updateTheme()  {
-  if (theme == 0) {
-    document.documentElement.style.setProperty('--bg', '#14131C');
-    document.documentElement.style.setProperty('--div', '#221F28');
-    document.documentElement.style.setProperty('--detail', '#d3dce0');
-    document.documentElement.style.setProperty('--hover', '#2f2d41');
-    document.documentElement.style.setProperty('--cb1', '#f19999');
-    document.documentElement.style.setProperty('--cb2', '#1e4a6e');
-    document.documentElement.style.setProperty('--wp', '#14131C');
-  }
-  else  {
-    document.documentElement.style.setProperty('--bg', '#bdbbca');
-    document.documentElement.style.setProperty('--div', '#a097b3');
-    document.documentElement.style.setProperty('--detail', '#FFF');
-    document.documentElement.style.setProperty('--hover', '#807baa');
-    document.documentElement.style.setProperty('--cb1', 'rgb(142, 176, 197)');
-    document.documentElement.style.setProperty('--cb2', '#4d7ea7');
-    document.documentElement.style.setProperty('--wp', '#14131C');
+function updateTheme() {
+  const themeProperties = {
+    0: {
+      '--bg': '#14131C',
+      '--div': '#221F28',
+      '--detail': '#d3dce0',
+      '--hover': '#2f2d41',
+      '--cb1': '#f19999',
+      '--cb2': '#1e4a6e',
+      '--wp': '#14131C'
+    },
+    1: {
+      '--bg': '#bdbbca',
+      '--div': '#a097b3',
+      '--detail': '#FFF',
+      '--hover': '#807baa',
+      '--cb1': 'rgb(142, 176, 197)',
+      '--cb2': '#4d7ea7',
+      '--wp': '#14131C'
+    }
+  };
+
+  const selectedTheme = themeProperties[theme] || themeProperties[0]; // Default to theme 0 if theme is not found
+
+  for (let property in selectedTheme) {
+    document.documentElement.style.setProperty(property, selectedTheme[property]);
   }
 }
 // display time in 12h or 24h format
 function updateTime() {
-  if (time == 0)  {
-    document.getElementById("time1").innerHTML = `1.00`;
-    document.getElementById("time3").innerHTML = `3.00`;
-    document.getElementById("time5").innerHTML = `5.00`;
-    document.getElementById("time7").innerHTML = `7.00`;
-    document.getElementById("time9").innerHTML = `9.00`;
-    document.getElementById("time11").innerHTML = `11.00`;
-    document.getElementById("time13").innerHTML = `13.00`;
-    document.getElementById("time15").innerHTML = `15.00`;
-    document.getElementById("time17").innerHTML = `17.00`;
-    document.getElementById("time19").innerHTML = `19.00`;
-    document.getElementById("time21").innerHTML = `21.00`;
-    document.getElementById("time23").innerHTML = `23.00`;
-  }
-  else {
-    document.getElementById("time1").innerHTML = `1 AM`;
-    document.getElementById("time3").innerHTML = `3 AM`;
-    document.getElementById("time5").innerHTML = `5 AM`;
-    document.getElementById("time7").innerHTML = `7 AM`;
-    document.getElementById("time9").innerHTML = `9 AM`;
-    document.getElementById("time11").innerHTML = `11 AM`;
-    document.getElementById("time13").innerHTML = `1 PM`;
-    document.getElementById("time15").innerHTML = `3 PM`;
-    document.getElementById("time17").innerHTML = `5 PM`;
-    document.getElementById("time19").innerHTML = `7 PM`;
-    document.getElementById("time21").innerHTML = `9 PM`;
-    document.getElementById("time23").innerHTML = `11 PM`;
-
+  for (let i = 1; i <= 23; i += 2) {
+    if (time == 1) {
+      document.getElementById("time" + i).innerHTML = `${i < 13 ? i : i - 12} ${i < 12 ? 'AM' : 'PM'}`;
+    } else {
+      document.getElementById("time" + i).innerHTML = `${i}.00`;
+    }
   }
 }

@@ -409,4 +409,9 @@ h3  {
     .citytitle  {
         font-size: 14px;
     }
+
+    .toggle {
+        height: 18px;
+        width: 50px;
+    }
   }
