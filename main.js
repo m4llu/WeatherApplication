@@ -3,7 +3,8 @@ let currentCity = "Lahti";
 var velUnit = "km/h"
 var tempUnit = "°C"
 var rain;
-var temperature;
+var temperaturec;
+var temperaturef;
 var feelsLike_c;
 var feelsLike_f;
 var wind_mph;
@@ -44,12 +45,12 @@ searchInput.addEventListener('change', function(event) {
 
     wind_kph = response.current.wind_kph;
     document.getElementById("wind").innerHTML = `${wind_kph} ${velUnit}`
-
+    temperaturec = response.current.temp_c;
+    temperaturef = response.current.temp_f;
     city = response.location.name;
-    document.getElementById("currentCity").innerHTML = `${city}`
+    document.getElementById("currentCity").innerHTML = `${city} ${temperaturec}${tempUnit}`
 
 
-    temperature = response.current.temp_c;
     console.log(response);
     wind_mph = response.current.wind_mph;
     // displaying icons for every hour
@@ -164,8 +165,10 @@ function updateUnitsOnScreen(feelsLike_c, feelslike_f, wind_kph, wind_mph) {
 
   if (tempUnit == "°F") {
     document.getElementById("feels").innerHTML = `${feelsLike_f} ${tempUnit}`
+    document.getElementById("currentCity").innerHTML = `${city} ${temperaturef}${tempUnit}`
   } else {
     document.getElementById("feels").innerHTML = `${feelsLike_c} ${tempUnit}`
+    document.getElementById("currentCity").innerHTML = `${city} ${temperaturec}${tempUnit}`
   }
 
 }
