@@ -3,10 +3,12 @@ let currentCity = "Lahti";
 var velUnit = "km/h"
 var tempUnit = "°C"
 var rain;
+var temperature;
 var feelsLike_c;
 var feelsLike_f;
 var wind_mph;
 var wind_kph;
+var city;
 let theme = 0
 let time = 0
 let lang = 0;
@@ -17,7 +19,7 @@ const checkBox3 = document.getElementById('checkBox3');
 
 searchInput.addEventListener('change', function(event) {
   currentCity = event.target.value;
-  document.getElementById("date").innerHTML = `${currentCity}`;
+
   // getting data from API
   fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${currentCity}&days=1&aqi=no&alerts=no`, {
     method: 'GET', 
@@ -32,7 +34,7 @@ searchInput.addEventListener('change', function(event) {
     let uvIndex = response.current.uv;
     document.getElementById("uv").innerHTML = `${uvIndex}`
   
-    rain = response.current.temp_c;
+    rain = response.forecast.forecastday[0].day.daily_chance_of_rain;
     document.getElementById("rain").innerHTML = `${rain} %`
   
     feelsLike_c = response.current.feelslike_c;
@@ -43,6 +45,12 @@ searchInput.addEventListener('change', function(event) {
     wind_kph = response.current.wind_kph;
     document.getElementById("wind").innerHTML = `${wind_kph} ${velUnit}`
 
+    city = response.location.name;
+    document.getElementById("currentCity").innerHTML = `${city}`
+
+
+    temperature = response.current.temp_c;
+    console.log(response);
     wind_mph = response.current.wind_mph;
     // displaying icons for every hour
     let temperatureData = new Array(24).fill(0); 
@@ -200,3 +208,4 @@ function updateTime() {
     }
   }
 }
+
